@@ -18,5 +18,5 @@ def rasp_twilio_sms_control():
 if __name__ == "__main__":
     app.run(debug=True)
 
-
+#rc.local file run webapp and dayselector
 
