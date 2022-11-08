@@ -34,7 +34,6 @@ def changeDay():
 def getRandomQRCode(): 
     #called in buttonPress everytime the button is pressed. Randomly chooses a QR code
     #in the selected day's folder
-    print("called")
     os.chdir(folderPathWithDay)
     days = os.listdir()
     selectedQRCode = random.choice(days)
