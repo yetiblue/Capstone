@@ -8,7 +8,7 @@ from PIL import Image
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 dayNumber = 0
-folderPath = '../QRcodes'
+folderPath = '/home/pi/Capstone/Thermal-Printer/QRcodes'
 
 
 
@@ -31,7 +31,7 @@ def changeDay():
     global folderPath 
     global folderPathWithDay
     folderPathWithDay = folderPath + '/' + dayString
-    print(folderPathWithDay)
+    # print(folderPathWithDay)
     
 def getRandomQRCode(): 
     #called in buttonPress everytime the button is pressed. Randomly chooses a QR code
@@ -39,7 +39,7 @@ def getRandomQRCode():
     os.chdir(folderPathWithDay)
     days = os.listdir()
     selectedQRCode = random.choice(days)
-    print(random.choice(days))
-    sendToPrinterImage = Image.open(selectedQRCode) #selectedQRCode should be a path, which Image will open
-    printer.printImage(selectedQRCode, True)
+    # print(random.choice(days))
+    sendToPrinterImage = Image.open(folderPathWithDay + '/' + selectedQRCode) #selectedQRCode should be a path, which Image will open
+    printer.printImage(sendToPrinterImage, True)
     #printer.printBitmap(adaqrcode.width, adaqrcode.height, adaqrcode.data)
