@@ -4,10 +4,12 @@ import random
 import threading
 from datetime import datetime
 from Adafruit_Thermal import *
+from PIL import Image
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 dayNumber = 0
 folderPath = '/QRcodes'
+
 
 
 def changeDay():
@@ -34,10 +36,10 @@ def changeDay():
 def getRandomQRCode(): 
     #called in buttonPress everytime the button is pressed. Randomly chooses a QR code
     #in the selected day's folder
-    print("called")
     os.chdir(folderPathWithDay)
     days = os.listdir()
     selectedQRCode = random.choice(days)
     print(random.choice(days))
+    sendToPrinterImage = Image.open(selectedQRCode) #selectedQRCode should be a path, which Image will open
     printer.printImage(selectedQRCode, True)
     #printer.printBitmap(adaqrcode.width, adaqrcode.height, adaqrcode.data)
