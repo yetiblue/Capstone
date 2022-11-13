@@ -8,7 +8,7 @@ from PIL import Image
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 dayNumber = 0
-folderPath = '/QRcodes'
+folderPath = '../QRcodes'
 
 
 
