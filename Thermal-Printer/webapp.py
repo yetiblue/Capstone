@@ -11,7 +11,9 @@ def rasp_twilio_sms_control():
     # get the SMS content
     sms_content = request.values.get('body', '')
     print(sms_content)
-    printer.print(sms_content)
+    printer.justift('C')
+    printer.println(sms_content)
+    printer.feed(3)
     sms_resp = MessagingResponse()
     return str(sms_resp)
 

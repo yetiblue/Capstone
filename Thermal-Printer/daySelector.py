@@ -40,6 +40,8 @@ def getRandomQRCode():
     days = os.listdir()
     selectedQRCode = random.choice(days)
     # print(random.choice(days))
+    newSize = (400,400)
     sendToPrinterImage = Image.open(folderPathWithDay + '/' + selectedQRCode) #selectedQRCode should be a path, which Image will open
-    printer.printImage(sendToPrinterImage, True)
+    printer.printImage(sendToPrinterImage.resize(newSize), True)
+    printer.feed(3)
     #printer.printBitmap(adaqrcode.width, adaqrcode.height, adaqrcode.data)
