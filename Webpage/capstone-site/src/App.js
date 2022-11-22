@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import TitleAndContentComponent from "./TitleAndContentCardComponent";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [activities, setActivities] = useState([]);
@@ -53,8 +53,22 @@ function App() {
       );
     }
   }
+  let REMAINING_MILES = 3078;
+  const todaysMiles = activities.distance / 1609;
+  //store.push(remainin_miles - todaysMiles)
+  const dailySteps = Math.round(activities.average_cadence * 2);
+  // const milesToFinish = store.get("remaining_miles")
 
-  return <div className="App">{showActivities()} </div>;
+  return (
+    <div className="App">
+      {showActivities()}
+      <TitleAndContentComponent title="Step Counter" content={dailySteps} />
+      <TitleAndContentComponent
+        title="Miles to Finish"
+        content={activities.average_cadence}
+      />
+    </div>
+  );
 }
 
 export default App;
