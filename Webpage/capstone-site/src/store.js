@@ -1,16 +1,12 @@
-// import rotateReducer from "reducers/rotateReducer";
-
-// function configureStore(state = { rotating: true }) {
-//   return createStore(rotateReducer, state);
-// }
-
-// export default configureStore;
-import { configureStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import distanceReducer from "./features/distanceSlice";
+import elevationReducer from "./features/elevationSlice";
+import stepsReducer from "./features/stepsSlice";
 
 export default configureStore({
   reducer: {
-    totalElevation: "foo",
-    totalDistance: "foo",
-    totalSteps: "foo",
+    totalElevation: elevationReducer,
+    distance: distanceReducer,
+    totalSteps: stepsReducer,
   },
 });
