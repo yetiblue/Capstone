@@ -7,7 +7,10 @@ import borders from "@mui/material/Typography";
 
 export default function WidgetCard(props) {
   return (
-    <Card variant="outlined" sx={{ borderRadius: "16px", maxWidth: 160 }}>
+    <Card
+      variant="outlined"
+      sx={{ height: 200, borderRadius: "16px", maxWidth: 160 }}
+    >
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {props.title}

@@ -6,7 +6,7 @@ import stepsReducer from "./features/stepsSlice";
 export default configureStore({
   reducer: {
     totalElevation: elevationReducer,
-    distance: distanceReducer,
+    totalDistance: distanceReducer,
     totalSteps: stepsReducer,
   },
 });

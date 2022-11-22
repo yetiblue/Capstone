@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+const latestDistance = window.localStorage.getItem("newDistance");
 
 export const distanceSlice = createSlice({
   name: "distance",
