@@ -39,6 +39,7 @@ function App() {
   function showActivities() {
     if (isLoading) return <>LOADING</>;
     if (!isLoading) {
+      console.log(activity);
       let existingRuns = localStorage.getItem("StravaData");
 
       const activityContainer = [];
