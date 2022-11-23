@@ -18,7 +18,7 @@ export default function ActivitiesContent(props) {
   useEffect(() => {
     const firstLoad = localStorage.getItem("pageReloads");
     if (props.data.length !== 0) {
-      const convertedDistance = Math.round(props.data.distance / 1609);
+      const todaysDistance = Math.round(props.data.distance / 1609);
       if (firstLoad === 0) {
         //without this counter all localStorage values would reset to 0 (default) every reload
         localStorage.setItem("pageReloads", 1);
@@ -27,14 +27,14 @@ export default function ActivitiesContent(props) {
       } else {
         const previousDistance = localStorage.getItem("differentRuns");
         const storedTotal = localStorage.getItem("distanceTotal");
-        const currentTotal = Number(storedTotal) + Number(convertedDistance);
+        const currentTotal = Number(storedTotal) + Number(todaysDistance);
         //prevents running total from changing if no new data upon reload
-        if (Number(previousDistance) !== Number(convertedDistance)) {
+        if (Number(previousDistance) !== Number(todaysDistance)) {
           localStorage.setItem("distanceTotal", currentTotal);
-          localStorage.setItem("differentRuns", convertedDistance);
+          localStorage.setItem("differentRuns", todaysDistance);
         }
       }
-      dispatch(testDecrementByAmount(convertedDistance));
+      dispatch(testDecrementByAmount(todaysDistance));
       const convertedElevation = Math.round(
         props.data.total_elevation_gain * 3.333
       );
