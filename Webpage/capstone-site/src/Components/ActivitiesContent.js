@@ -13,28 +13,14 @@ import {
 import { incrementSteps, testIncrementSteps } from "../features/stepsSlice";
 export default function ActivitiesContent(props) {
   const dispatch = useDispatch();
-  localStorage.setItem("pageReloads", 0); //makes this counter exist
+  //   localStorage.setItem("pageReloads", 0); //makes this counter exist
 
   useEffect(() => {
-    const firstLoad = localStorage.getItem("pageReloads");
     if (props.data.length !== 0) {
       const todaysDistance = Math.round(props.data.distance / 1609);
-      if (firstLoad === 0) {
-        //without this counter all localStorage values would reset to 0 (default) every reload
-        localStorage.setItem("pageReloads", 1);
-        localStorage.setItem("differentRuns", 0);
-        localStorage.setItem("distanceTotal", 0);
-      } else {
-        const previousDistance = localStorage.getItem("differentRuns");
-        const storedTotal = localStorage.getItem("distanceTotal");
-        const currentTotal = Number(storedTotal) + Number(todaysDistance);
-        //prevents running total from changing if no new data upon reload
-        if (Number(previousDistance) !== Number(todaysDistance)) {
-          localStorage.setItem("distanceTotal", currentTotal);
-          localStorage.setItem("differentRuns", todaysDistance);
-        }
-      }
+
       dispatch(testDecrementByAmount(todaysDistance));
+
       const convertedElevation = Math.round(
         props.data.total_elevation_gain * 3.333
       );
@@ -50,10 +36,12 @@ export default function ActivitiesContent(props) {
       <TitleAndContentComponent
         title="Step Counter"
         content={props.data.dailySteps}
+        height="100px"
       />
       <TitleAndContentComponent
         title="Miles to Finish"
         content={remainingMiles}
+        height="100px"
       />
     </div>
   );

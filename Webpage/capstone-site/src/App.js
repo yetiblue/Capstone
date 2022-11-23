@@ -3,7 +3,7 @@ import ActivitiesContent from "./Components/ActivitiesContent";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [activities, setActivities] = useState([]);
+  const [activity, setActivities] = useState([]);
 
   //Strava Credentials
   let clientID = "94744";
@@ -19,22 +19,19 @@ function App() {
   // Use refresh token to get current access token
   useEffect(() => {
     console.log("use effect");
-    // setTimeout(() => {
     fetch(callRefresh, {
       method: "POST",
     })
       .then((res) => res.json())
       .then((result) => getActivities(result.access_token));
   }, []);
-  // }, 86400);
 
-  // use current access token to call all activities
   function getActivities(access) {
     console.log("called");
     fetch(callActivities, { headers: { Authorization: `Bearer ${access}` } })
       .then((res) => res.json())
       .then(
-        (data) => setActivities(data[10]),
+        (data) => setActivities(data[17]),
         setIsLoading((prev) => !prev)
       )
       .catch((e) => console.log(e));
@@ -42,22 +39,32 @@ function App() {
   function showActivities() {
     if (isLoading) return <>LOADING</>;
     if (!isLoading) {
-      console.log(activities);
-      return (
-        <div>
-          <p>{activities.moving_time}</p>
-          <p>{activities.distance}</p> {/* subtract from total */}
-          <p>{activities.total_elevation_gain}</p>
-          <p>{activities.start_latlng}</p>
-          <p>{activities.average_cadence}</p> {/* times two */}
-        </div>
-      );
+      let existingRuns = localStorage.getItem("StravaData");
+
+      const activityContainer = [];
+      if (!existingRuns && activity.length !== 0) {
+        activityContainer.push(activity);
+        localStorage.setItem("StravaData", JSON.stringify(activityContainer));
+      } else if (existingRuns && activity.length !== 0) {
+        const latestRun = JSON.parse(existingRuns).at(-1);
+        if (latestRun.distance !== activity.distance) {
+          const flatRuns = JSON.parse(existingRuns);
+          console.log(flatRuns.flat(), "flat");
+
+          activityContainer.push(JSON.parse(existingRuns));
+          activityContainer.push(activity);
+          localStorage.setItem(
+            "StravaData",
+            JSON.stringify(activityContainer.flat(100))
+          );
+        }
+      }
     }
   }
   return (
     <div className="App">
       {showActivities()}
-      <ActivitiesContent data={activities} />
+      <ActivitiesContent data={activity} height={100} />
     </div>
   );
 }
