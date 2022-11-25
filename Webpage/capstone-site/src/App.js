@@ -31,7 +31,7 @@ function App() {
     fetch(callActivities, { headers: { Authorization: `Bearer ${access}` } })
       .then((res) => res.json())
       .then(
-        (data) => setActivities(data[17]),
+        (data) => setActivities(data[1]),
         setIsLoading((prev) => !prev)
       )
       .catch((e) => console.log(e));
@@ -41,13 +41,15 @@ function App() {
     if (!isLoading) {
       console.log(activity);
       let existingRuns = localStorage.getItem("StravaData");
-
       const activityContainer = [];
       if (!existingRuns && activity.length !== 0) {
         activityContainer.push(activity);
         localStorage.setItem("StravaData", JSON.stringify(activityContainer));
       } else if (existingRuns && activity.length !== 0) {
+        console.log(existingRuns, "safari existing");
         const latestRun = JSON.parse(existingRuns).at(-1);
+        // let parsedRuns = JSON.parse(existingRuns);
+        // let latestRun = parsedRuns.at(1);
         if (latestRun.distance !== activity.distance) {
           const flatRuns = JSON.parse(existingRuns);
           console.log(flatRuns.flat(), "flat");

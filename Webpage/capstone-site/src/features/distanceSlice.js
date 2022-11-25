@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+let distanceCovered = 0;
 const allRuns = JSON.parse(localStorage.getItem("StravaData"));
-const distancesOnly = allRuns.map((x) => x.distance);
-const distanceCovered = distancesOnly.reduce((a, b) => a + b);
-
+if (allRuns !== null) {
+  const distancesOnly = allRuns.map((x) => x.distance);
+  distanceCovered = distancesOnly.reduce((a, b) => a + b);
+}
 export const distanceSlice = createSlice({
   name: "distance",
   initialState: {
-    value: 3078,
+    value: 3078 - Math.round(distanceCovered / 1609.344),
     testValue: 3078 - Math.round(distanceCovered / 1609.344),
   },
   reducers: {
