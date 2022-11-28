@@ -1,0 +1,17 @@
+.location-wrapper {
+  display: flex;
+  /* align-items: center; */
+  padding-top: 4em;
+  /* position: absolute; */
+  /* backdrop-filter: blur(2.7px) contrast(0.9); */
+
+  top: 0;
+  max-width: 350px;
+  position: relative;
+  z-index: 3;
+  height: 300px;
+  color: black;
+}
+.location-wrapper__content {
+  color: black;
+}

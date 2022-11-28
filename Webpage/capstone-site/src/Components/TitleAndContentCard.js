@@ -9,13 +9,24 @@ export default function WidgetCard(props) {
   return (
     <Card
       variant="outlined"
-      sx={{ height: 200, borderRadius: "16px", maxWidth: 160 }}
+      sx={{
+        height: props.height,
+        borderRadius: "16px",
+        backgroundColor: props.color,
+        maxWidth: 170,
+        fontWeight: "bold",
+      }}
     >
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          sx={{ fontWeight: "bold" }}
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           {props.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="h5" color="text.secondary">
           {props.content}
         </Typography>
       </CardContent>

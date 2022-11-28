@@ -4,6 +4,11 @@ import TitleAndContentCard from "./TitleAndContentCard";
 import LocationCard from "./LocationCard";
 import { useSelector } from "react-redux";
 import WeatherCard from "./WeatherCard";
+import "./ActivitiesContent.css";
+// import { AppBar } from "@mui/material";
+// import { Toolbar } from "@mui/material";
+// import { Typography } from "@mui/material";
+import GeographyCard from "./GeographyCard";
 
 // 25c7fee7d8e9c629fbb2fcb930882817
 
@@ -34,29 +39,73 @@ export default function ActivitiesContent(props) {
   const totalElevation = useSelector((state) => state.totalElevation.testValue);
   const dailySteps = useSelector((state) => state.totalSteps.testValue);
   const latlang = props.data.start_latlng;
-
+  const todaysDistance = (props.data.distance / 1609).toFixed(2) + " " + "mi";
   return (
-    <div className="App">
-      <TitleAndContentCard
-        title="Step Counter"
-        content={dailySteps}
-        height="100px"
-      />
-      <TitleAndContentCard
-        title="Miles to Finish"
-        content={remainingMiles}
-        height="100px"
-      />
-      <TitleAndContentCard
-        title="Elevation Covered (ft)"
-        content={totalElevation}
-        height="100px"
-      />
-      <LocationCard title="Location" content={locationData} coords={latlang} />
-      <WeatherCard title="Weather" content={weatherData} />
+    <div className="widget-wrapper">
+      <div className="widget-content__grid__item">
+        <LocationCard
+          title="Current Location"
+          content={locationData}
+          coords={latlang}
+        />
+      </div>
+      <div className="widget-wrapper__content">
+        <div className="widget-content__grid">
+          <div className="widget-content__grid__item">
+            <WeatherCard title="Weather" content={weatherData} />
+          </div>
+          <div className="widget-content__grid__item">
+            <TitleAndContentCard
+              title="Step Counter"
+              content={dailySteps}
+              height="150px"
+              color="#FFC107"
+              x
+            />
+          </div>
+        </div>
+        <div className="widget-content__grid">
+          <div className="widget-content__grid__item">
+            <TitleAndContentCard
+              title="Elevation Covered (ft)"
+              content={totalElevation}
+              height="200px"
+              className="widget-content__grid__item"
+              color="#FFB4AB"
+            />
+          </div>
+          <div className="widget-content__grid__item">
+            {" "}
+            <GeographyCard
+              title="Geography"
+              content={locationData}
+              height="200px"
+              x
+            />
+          </div>
 
-      {props.data.distance}
-      {/* {locationData[3]}, {locationData[4]} */}
+          <div className="widget-content__grid__item">
+            <TitleAndContentCard
+              title="Miles to Finish"
+              content={remainingMiles}
+              height="150px"
+              color="#D9EC7A"
+              className="widget-content__grid__item"
+            />
+          </div>
+          <div className="widget-content__grid__item">
+            <TitleAndContentCard
+              title="Today's Distance"
+              content={todaysDistance}
+              height="150px"
+              color="#D9EC7A"
+              className="widget-content__grid__item"
+            />
+          </div>
+        </div>
+
+        {/* {locationData[3]}, {locationData[4]} */}
+      </div>
     </div>
   );
 }
