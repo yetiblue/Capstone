@@ -9,6 +9,7 @@ import "./ActivitiesContent.css";
 // import { Toolbar } from "@mui/material";
 // import { Typography } from "@mui/material";
 import GeographyCard from "./GeographyCard";
+import DayCard from "./DayCard";
 
 // 25c7fee7d8e9c629fbb2fcb930882817
 
@@ -39,7 +40,7 @@ export default function ActivitiesContent(props) {
   const totalElevation = useSelector((state) => state.totalElevation.testValue);
   const dailySteps = useSelector((state) => state.totalSteps.testValue);
   const latlang = props.data.start_latlng;
-  const todaysDistance = (props.data.distance / 1609).toFixed(2) + " " + "mi";
+  const todaysDistance = (props.data.distance / 1609).toFixed(2);
   return (
     <div className="widget-wrapper">
       <div className="widget-content__grid__item">
@@ -58,28 +59,38 @@ export default function ActivitiesContent(props) {
             <TitleAndContentCard
               title="Step Counter"
               content={dailySteps}
-              height="150px"
+              height="165px"
               color="#FFC107"
               x
+            />
+          </div>
+          <div className="widget-content__grid__item">
+            <TitleAndContentCard
+              title="Elevation Covered (ft)"
+              content={totalElevation}
+              height="195px"
+              className="widget-content__grid__item"
+              color="#FFB4AB"
             />
           </div>
         </div>
         <div className="widget-content__grid">
           <div className="widget-content__grid__item">
-            <TitleAndContentCard
-              title="Elevation Covered (ft)"
-              content={totalElevation}
+            <DayCard
+              title="Day"
+              content="70"
               height="200px"
-              className="widget-content__grid__item"
-              color="#FFB4AB"
+              color="#FFC107"
+              x
             />
           </div>
+
           <div className="widget-content__grid__item">
             {" "}
             <GeographyCard
               title="Geography"
               content={locationData}
-              height="200px"
+              height="190px"
               x
             />
           </div>
@@ -95,10 +106,10 @@ export default function ActivitiesContent(props) {
           </div>
           <div className="widget-content__grid__item">
             <TitleAndContentCard
-              title="Today's Distance"
+              title="Today's Distance (mi)"
               content={todaysDistance}
-              height="150px"
-              color="#D9EC7A"
+              height="170px"
+              color="rgba(100,197,200,0.8)"
               className="widget-content__grid__item"
             />
           </div>

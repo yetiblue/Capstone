@@ -18,15 +18,19 @@ export default function WidgetCard(props) {
       }}
     >
       <CardContent>
-        <Typography
-          sx={{ fontWeight: "bold" }}
-          gutterBottom
-          variant="h5"
-          component="div"
-        >
+        <Typography gutterBottom variant="h4" component="div">
           {props.title}
         </Typography>
-        <Typography variant="h4" color="text.secondary">
+        <Typography
+          variant="h1"
+          sx={{
+            fontWeight: "bold",
+            marginTop: -1,
+            color: "white",
+            paddingLeft: 1.8,
+          }}
+          color="text.secondary"
+        >
           {props.content}
         </Typography>
       </CardContent>

@@ -64,25 +64,40 @@ export default function LocationCard(props) {
         sx={{
           height: 200,
           borderRadius: "16px",
-          maxWidth: 350,
+          maxWidth: 355,
         }}
       >
         <CardContent>
           <div className="location-wrapper">
             <div className="location-wrapper__title">
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography
+                gutterBottom
+                variant="h4"
+                sx={{ marginTop: -1 }}
+                component="div"
+              >
                 {props.title}
               </Typography>
             </div>
             <div className="location-wrapper__content">
               <Typography
-                sx={{ color: "black", fontWeight: "bold" }}
+                sx={{
+                  color: "black",
+                  fontWeight: "bold",
+                  marginTop: -1,
+                  maxWidth: 140,
+                }}
                 variant="h6"
                 color="text.secondary"
               >
                 {props.content[3].text}, {stateName}
               </Typography>
-              <Typography gutterBottom variant="body2" component="div">
+              <Typography
+                sx={{ maxWidth: 140 }}
+                gutterBottom
+                variant="body2"
+                component="div"
+              >
                 {props.coords}
               </Typography>
             </div>
@@ -94,10 +109,10 @@ export default function LocationCard(props) {
           height="200"
           image={backgroundImage}
           sx={{
-            opacity: 0.3,
+            opacity: 0.25,
             position: "absolute",
             top: 0,
-            maxWidth: 350,
+            maxWidth: 330,
             borderRadius: "16px",
           }}
         />

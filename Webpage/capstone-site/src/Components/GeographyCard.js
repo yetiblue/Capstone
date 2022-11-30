@@ -8,6 +8,7 @@ import caliBackground from "../Images/cali.jpg";
 import appalachiaBackground from "../Images/appalachia.jpg";
 import cornBackground from "../Images/corn.jpg";
 import rockiesBackground from "../Images/rockies.jpg";
+import urbanBackground from "../Images/urban.jpg";
 
 export default function GeographyCard(props) {
   let geographyImage;
@@ -16,7 +17,7 @@ export default function GeographyCard(props) {
     const stateName = props.content[4].text;
     switch (stateName) {
       case "New York":
-        geographyImage = desertBackground;
+        geographyImage = urbanBackground;
         stateGeography = "Urban";
         break;
       case "California":
@@ -81,22 +82,22 @@ export default function GeographyCard(props) {
         height: props.height,
         borderRadius: "16px",
         backgroundColor: props.color,
-        maxWidth: 170,
+        maxWidth: 175,
         fontWeight: "bold",
       }}
     >
       <CardContent>
         <Typography
-          sx={{ fontWeight: "bold", marginTop: 6 }}
+          sx={{ fontWeight: "bold", marginTop: 6, color: "black" }}
           gutterBottom
           variant="h5"
         >
-          {props.title}
+          {props.title}:
         </Typography>
       </CardContent>
       <CardContent>
         <Typography
-          sx={{ fontWeight: "bold", marginTop: -4 }}
+          sx={{ marginTop: -5, color: "black" }}
           gutterBottom
           variant="h5"
         >
@@ -109,11 +110,11 @@ export default function GeographyCard(props) {
         height="200"
         image={geographyImage}
         sx={{
-          opacity: 0.6,
+          opacity: 0.4,
           maxWidth: 350,
           borderRadius: "16px",
           position: "relative",
-          marginTop: -20,
+          marginTop: -19,
         }}
       />
     </Card>

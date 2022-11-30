@@ -48,10 +48,10 @@ export default function WeatherCard(props) {
       <Card
         variant="outlined"
         sx={{
-          height: 390,
+          height: 370,
           borderRadius: "16px",
           background: backgroundGradient,
-          maxWidth: 170,
+          maxWidth: 175,
           opacity: 0.8,
         }}
       >
@@ -59,13 +59,18 @@ export default function WeatherCard(props) {
           <Typography
             sx={{ paddingTop: 10 }}
             gutterBottom
-            variant="h5"
+            variant="h4"
+            fontWeight="bold"
             component="div"
           >
             {props.title}
           </Typography>
-          <Typography variant="h5" color="text.secondary">
-            {weatherConditions}
+          <Typography
+            variant="h5"
+            sx={{ marginTop: -1.8 }}
+            color="text.secondary"
+          >
+            {weatherConditions.toUpperCase()}
           </Typography>
           <Typography gutterBottom variant="h3" color="white" component="div">
             {farenheitTemp}°F

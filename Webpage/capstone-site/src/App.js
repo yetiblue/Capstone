@@ -31,7 +31,7 @@ function App() {
     fetch(callActivities, { headers: { Authorization: `Bearer ${access}` } })
       .then((res) => res.json())
       .then(
-        (data) => setActivities(data[2]),
+        (data) => setActivities(data[1]),
         setIsLoading((prev) => !prev)
       )
       .catch((e) => console.log(e));

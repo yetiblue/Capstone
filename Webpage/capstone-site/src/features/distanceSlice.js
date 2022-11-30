@@ -4,6 +4,7 @@ const allRuns = JSON.parse(localStorage.getItem("StravaData"));
 if (allRuns !== null) {
   const distancesOnly = allRuns.map((x) => x.distance);
   distanceCovered = distancesOnly.reduce((a, b) => a + b);
+  console.log(distanceCovered, "covered");
 }
 export const distanceSlice = createSlice({
   name: "distance",
