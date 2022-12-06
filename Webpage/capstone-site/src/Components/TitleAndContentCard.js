@@ -3,17 +3,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import borders from "@mui/material/Typography";
-import { DonutChart } from "react-circle-chart";
 
 export default function WidgetCard(props) {
   const percentage = Math.round((props.content * 100) / 3078);
-  const items = [
-    {
-      value: percentage,
-      label: "Distance covered",
-    },
-  ];
+
   return (
     <Card
       variant="outlined"
@@ -40,12 +33,6 @@ export default function WidgetCard(props) {
           color="text.secondary"
         >
           {props.content}
-          <DonutChart
-            size={props.chartSize}
-            showTotal="false"
-            trackColor="#FFC107"
-            items={items}
-          />
         </Typography>
       </CardContent>
     </Card>
