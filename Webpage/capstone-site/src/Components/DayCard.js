@@ -22,12 +22,12 @@ export default function WidgetCard(props) {
           {props.title}
         </Typography>
         <Typography
-          variant="h1"
+          variant="h2"
           sx={{
             fontWeight: "bold",
-            marginTop: -1,
+            marginTop: -2.5,
             color: "white",
-            paddingLeft: 1.8,
+            paddingLeft: 0,
           }}
           color="text.secondary"
         >

@@ -1,7 +1,7 @@
 .location-wrapper {
   display: flex;
   /* align-items: center; */
-  padding-top: 4em;
+  padding-top: 2em;
   /* position: absolute; */
   /* backdrop-filter: blur(2.7px) contrast(0.9); */
 
@@ -9,9 +9,10 @@
   max-width: 350px;
   position: relative;
   z-index: 3;
-  height: 300px;
+  height: 200px;
   color: black;
 }
 .location-wrapper__content {
   color: black;
+  height: 150px;
 }

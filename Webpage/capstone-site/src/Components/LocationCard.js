@@ -62,9 +62,9 @@ export default function LocationCard(props) {
         className="weather-card"
         variant="outlined"
         sx={{
-          height: 200,
+          height: 160,
           borderRadius: "16px",
-          maxWidth: 355,
+          width: 335,
         }}
       >
         <CardContent>
@@ -112,6 +112,7 @@ export default function LocationCard(props) {
             opacity: 0.25,
             position: "absolute",
             top: 0,
+            height: 160,
             maxWidth: 330,
             borderRadius: "16px",
           }}

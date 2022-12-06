@@ -7,7 +7,6 @@ import borders from "@mui/material/Typography";
 
 export default function WeatherCard(props) {
   if (props.content.length !== 0) {
-    console.log(props.content.temp, "props");
     const farenheitTemp = Math.round(
       (props.content.main.temp - 273.15) * (9 / 5) + 32
     );
@@ -43,12 +42,11 @@ export default function WeatherCard(props) {
         break;
     }
     // ("rain, clear clouds, clear, sun");
-    console.log(backgroundGradient);
     return (
       <Card
         variant="outlined"
         sx={{
-          height: 370,
+          height: 310,
           borderRadius: "16px",
           background: backgroundGradient,
           maxWidth: 175,
@@ -57,7 +55,7 @@ export default function WeatherCard(props) {
       >
         <CardContent>
           <Typography
-            sx={{ paddingTop: 10 }}
+            sx={{ paddingTop: 6 }}
             gutterBottom
             variant="h4"
             fontWeight="bold"
