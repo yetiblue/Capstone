@@ -1,0 +1,25 @@
+.widget-wrapper {
+  /* display: flex;
+  justify-content: center; */
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.widget-wrapper__content {
+  display: flex;
+  width: 100%;
+}
+.widget-content__grid {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  max-height: 800px;
+}
+.widget-content__grid__item {
+  /* width: 500px; */
+  margin-bottom: 1em;
+  max-width: 95%;
+  padding-left: 0.2em;
+}
